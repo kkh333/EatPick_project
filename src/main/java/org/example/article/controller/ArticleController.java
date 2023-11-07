@@ -377,7 +377,9 @@ public class ArticleController {
             for (int i = 0; i < articlesResult.size(); i++) {
                 Article article = articlesResult.get(i);
                 System.out.printf("%d / %s / %s / %s / %d" + "원" + " / %d" + "g,ml" + " / %d" + "점" + " / %s / %s / %s\n", postNum, article.getCategory(), article.getFoodName(), article.getBrandName(), article.getPrice(), article.getWeight(), article.getScope(), article.getReview(), article.getWriter(), article.getRegDate());
+                //System.out.println("평균 별점 : article.getScope()의 총합 / article.getScope()의 개수")
                 postNum++;
+                //중량 단위 제한( 1. g, ml를 제외한 나머지 오류 처리 2. 단순한 선택지 2개만 주고 작성자를 신뢰)
             }
 
             Container.meneList2();
