@@ -62,8 +62,14 @@ public class MemberController {
         while (true) {
             System.out.printf("비밀번호 : ");
             password = Container.getSc().nextLine().trim();
+            // 비밀번호가 유효하지 않을 때
+            if (!isPasswordValid(password)) {
+                System.out.println("\n" + PasswordValidator.getErrorMessage(password));
+                continue;
+            }
             System.out.printf("비밀번호 확인 : ");
             passwordConfirm = Container.getSc().nextLine().trim();
+
 
             // 비밀번호와 비밀번호 확인이 일치하지 않을 때
             if (!password.equals(passwordConfirm)) {
@@ -71,11 +77,7 @@ public class MemberController {
                 continue;
             }
 
-            // 비밀번호가 유효하지 않을 때
-            if (!isPasswordValid(password)) {
-                System.out.println("\n" + PasswordValidator.getErrorMessage(password));
-                continue;
-            }
+
 
             // 모든 조건을 만족할 경우 반복문 종료
             break;
