@@ -85,11 +85,15 @@ public class App {
                     case "8":
                         articleController.brandNamePost();
                         break;
+                    case "작성자 검색" :
+                    case "9" :
+                        articleController.writerPost();
+                        break;
                     case "로그아웃":
-                    case "9":
+                    case "10":
                         memberController.logout();
                         break;
-                    case "10":
+                    case "11":
                         systemController.exit();
                         return;
                 }

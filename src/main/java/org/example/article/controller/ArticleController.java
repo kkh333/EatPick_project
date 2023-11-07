@@ -12,6 +12,7 @@ import java.util.List;
 
 public class ArticleController {
     ArticleService articleService = new ArticleService();
+
     public void myPostList() {
         List<Article> articles = articleService.getArticleListMy();
 
@@ -25,6 +26,7 @@ public class ArticleController {
             postNum++;
         }
     }
+
     public void write() {
         String category;
         String foodName;
@@ -69,8 +71,7 @@ public class ArticleController {
         while (true) {
             try {
                 price = Integer.parseInt(Container.getSc().nextLine().trim());
-            }
-            catch (Exception e) {
+            } catch (Exception e) {
                 System.out.println("\n입력된 값은 숫자가 아닙니다. 다시 입력해 주세요.");
                 continue;
             }
@@ -81,8 +82,7 @@ public class ArticleController {
         while (true) {
             try {
                 weight = Integer.parseInt(Container.getSc().nextLine().trim());
-            }
-            catch (Exception e) {
+            } catch (Exception e) {
                 System.out.println("\n입력된 값은 숫자가 아닙니다. 다시 입력해 주세요.");
                 continue;
             }
@@ -97,8 +97,7 @@ public class ArticleController {
                     System.out.println("\n입력된 값은 정해진 값이 아닙니다. 다시 입력해 주세요.");
                     continue;
                 }
-            }
-            catch (Exception e) {
+            } catch (Exception e) {
                 System.out.println("\n입력된 값은 숫자가 아닙니다. 다시 입력해 주세요.");
                 continue;
             }
@@ -114,6 +113,7 @@ public class ArticleController {
 
         Container.meneList2();
     }
+
     public void modify() {
         List<Article> articles = articleService.getArticleListMy();
         Article article = null;
@@ -123,8 +123,7 @@ public class ArticleController {
             System.out.println("\n게시글이 존재하지 않습니다.");
             Container.meneList2();
             return;
-        }
-        else {
+        } else {
             myPostList();
 
             System.out.println("\n수정할 번호를 입력해 주세요.");
@@ -135,8 +134,7 @@ public class ArticleController {
                     Container.meneList2();
                     return;
                 }
-            }
-            catch (Exception e) {
+            } catch (Exception e) {
                 System.out.println("\n입력 값은 정수로 입력할 수 있습니다.");
                 Container.meneList2();
                 return;
@@ -191,8 +189,7 @@ public class ArticleController {
             try {
                 System.out.printf("기존 내용 : " + article.getPrice() + " => ");
                 price = Integer.parseInt(Container.getSc().nextLine().trim());
-            }
-            catch (Exception e) {
+            } catch (Exception e) {
                 System.out.println("\n입력된 값은 숫자가 아닙니다. 다시 입력해 주세요.");
                 continue;
             }
@@ -204,8 +201,7 @@ public class ArticleController {
             try {
                 System.out.printf("기존 내용 : " + article.getWeight() + " => ");
                 weight = Integer.parseInt(Container.getSc().nextLine().trim());
-            }
-            catch (Exception e) {
+            } catch (Exception e) {
                 System.out.println("\n입력된 값은 숫자가 아닙니다. 다시 입력해 주세요.");
                 continue;
             }
@@ -221,8 +217,7 @@ public class ArticleController {
                     System.out.println("\n입력된 값은 정해진 값이 아닙니다. 다시 입력해 주세요.");
                     continue;
                 }
-            }
-            catch (Exception e) {
+            } catch (Exception e) {
                 System.out.println("\n입력된 값은 숫자가 아닙니다. 다시 입력해 주세요.");
                 continue;
             }
@@ -239,6 +234,7 @@ public class ArticleController {
 
         Container.meneList2();
     }
+
     public void remove() {
         List<Article> articles = articleService.getArticleListMy();
         Article article = null;
@@ -248,8 +244,7 @@ public class ArticleController {
             System.out.println("\n게시글이 존재하지 않습니다.");
             Container.meneList2();
             return;
-        }
-        else {
+        } else {
             myPostList();
 
             System.out.println("\n삭제할 번호를 입력해 주세요.");
@@ -260,8 +255,7 @@ public class ArticleController {
                     Container.meneList2();
                     return;
                 }
-            }
-            catch (Exception e) {
+            } catch (Exception e) {
                 System.out.println("\n입력 값은 정수로 입력할 수 있습니다.");
                 Container.meneList2();
                 return;
@@ -275,6 +269,7 @@ public class ArticleController {
 
         Container.meneList2();
     }
+
     public void myPost() {
         List<Article> articles = articleService.getArticleListMy();
 
@@ -282,13 +277,13 @@ public class ArticleController {
             System.out.println("\n게시글이 존재하지 않습니다.");
 
             Container.meneList2();
-        }
-        else {
+        } else {
             myPostList();
 
             Container.meneList2();
         }
     }
+
     public void allPost() {
         List<Article> articles = articleService.getArticleListAll();
 
@@ -298,8 +293,7 @@ public class ArticleController {
             System.out.println("\n게시글이 존재하지 않습니다.");
 
             Container.meneList2();
-        }
-        else {
+        } else {
             Container.postTh2();
 
             for (int i = 0; i < articles.size(); i++) {
@@ -311,6 +305,7 @@ public class ArticleController {
             Container.meneList2();
         }
     }
+
     public void categoryPost() {
         System.out.println("\n검색하실 카테고리를 입력해 주세요. (탄수화물 / 육류 / 어류 / 식물성 / 영양제 / 보충제 / 기타)");
         String searchCategory = Container.getSc().nextLine().trim();
@@ -343,8 +338,7 @@ public class ArticleController {
             System.out.println("\n\"" + searchCategory + "\" 해당 카테고리 검색 결과가 없습니다.");
 
             Container.meneList2();
-        }
-        else {
+        } else {
             Container.postTh2();
 
             for (int i = 0; i < articles.size(); i++) {
@@ -356,6 +350,7 @@ public class ArticleController {
             Container.meneList2();
         }
     }
+
     public void foodNamePost() {
         System.out.println("\n검색하실 음식명을 입력해 주세요.");
         String searchText = Container.getSc().nextLine().trim();
@@ -376,8 +371,7 @@ public class ArticleController {
             System.out.println("\n\"" + searchText + "\" 해당 검색 결과가 없습니다.");
 
             Container.meneList2();
-        }
-        else {
+        } else {
             Container.postTh2();
 
             for (int i = 0; i < articlesResult.size(); i++) {
@@ -389,6 +383,7 @@ public class ArticleController {
             Container.meneList2();
         }
     }
+
     public void brandNamePost() {
         System.out.println("\n검색하실 브랜드명을 입력해 주세요.");
         String searchText = Container.getSc().nextLine().trim();
@@ -409,8 +404,40 @@ public class ArticleController {
             System.out.println("\n\"" + searchText + "\" 해당 검색 결과가 없습니다.");
 
             Container.meneList2();
+        } else {
+            Container.postTh2();
+
+            for (int i = 0; i < articlesResult.size(); i++) {
+                Article article = articlesResult.get(i);
+                System.out.printf("%d / %s / %s / %s / %d" + "원" + " / %d" + "g,ml" + " / %d" + "점" + " / %s / %s / %s\n", postNum, article.getCategory(), article.getFoodName(), article.getBrandName(), article.getPrice(), article.getWeight(), article.getScope(), article.getReview(), article.getWriter(), article.getRegDate());
+                postNum++;
+            }
+
+            Container.meneList2();
         }
-        else {
+    }
+
+    public void writerPost() {
+        System.out.print("검색하실 작성자명을 입력해 주세요.");
+        String searchWriter = Container.getSc().nextLine().trim();
+
+        List<Article> articles = articleService.getArticleListAll();
+        List<Article> articlesResult = new ArrayList<>();
+
+        int postNum = 1;
+
+        for (int i = 0; i < articles.size(); i++) {
+            Article article = articles.get(i);
+            if (article.getWriter().contains(searchWriter)) {
+                articlesResult.add(articles.get(i));
+            }
+        }
+
+        if (articlesResult.size() == 0) {
+            System.out.println("\n\"" + searchWriter + "\" 해당 검색 결과가 없습니다.");
+
+            Container.meneList2();
+        } else {
             Container.postTh2();
 
             for (int i = 0; i < articlesResult.size(); i++) {
