@@ -41,6 +41,7 @@ public class App {
                         memberController.login();
                         break;
                     case "회원가입":
+                        System.out.println("비밀번호는 9자 이상, 영문과 특수문자가 포함되어야 합니다.");
                         memberController.join();
                         break;
                 }
