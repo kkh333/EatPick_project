@@ -9,7 +9,7 @@ import org.example.util.Util;
 
 import java.util.ArrayList;
 import java.util.List;
-
+import java.util.Locale;
 
 
 public class ArticleController {
@@ -83,8 +83,6 @@ public class ArticleController {
 
         System.out.println("\n5.중량을 입력해 주세요.");
 
-
-
         while (true) {
 
             try {
@@ -95,13 +93,25 @@ public class ArticleController {
             }
 
             int weightNum = Integer.parseInt(inputWeight.replaceAll("[^0-9]", ""));
-            String unit = inputWeight.replaceAll("[^g ml]", "");
-            //KG이 아닌 kg로 ml가 아닌 Ml 적어도 오류가 안뜨고 넘어가는 문제 해결 필요.
-            if (unit.equals("")) {
-                System.out.println("단위는 g, ml만 가능합니다");
-                continue;
+            String unit = inputWeight.replaceAll("[^a-z]", "");
+            //Kg을 작성 하면 g만 출력 되는 현상 해결 필요.
+            switch(unit.toLowerCase()) {
+                case "kg" :
+                    unit = "kg";
+                    break;
+                case "ml" :
+                    unit = "ml";
+                    break;
+                case "g":
+                    unit = "g";
+                    break;
+                case "L" :
+                    unit = "l";
+                    break;
+                default:
+                    System.out.println("단위는 kg, g, l, ml만 가능합니다");
+                    continue;
             }
-
             weight = Integer.toString(weightNum).concat(unit);
 
             System.out.println(weight);
@@ -166,6 +176,7 @@ public class ArticleController {
         String brandName;
         int price;
         String weight;
+        String inputWeight;
         int scope;
         String review;
 
@@ -219,11 +230,34 @@ public class ArticleController {
         while (true) {
             try {
                 System.out.printf("기존 내용 : " + article.getWeight() + " => ");
-                weight = Container.getSc().nextLine().trim();
+                inputWeight = Container.getSc().nextLine().trim();
             } catch (Exception e) {
                 System.out.println("\n입력된 값은 숫자가 아닙니다. 다시 입력해 주세요.");
                 continue;
             }
+
+            int weightNum = Integer.parseInt(inputWeight.replaceAll("[^0-9]", ""));
+            String unit = inputWeight.replaceAll("[^a-z]", "");
+            switch(unit.toLowerCase()) {
+                case "kg" :
+                    unit = "kg";
+                    break;
+                case "ml" :
+                    unit = "ml";
+                    break;
+                case "g":
+                    unit = "g";
+                    break;
+                case "L" :
+                    unit = "l";
+                    break;
+                default:
+                    System.out.println("단위는 kg, g, l, ml만 가능합니다");
+                    continue;
+            }
+            weight = Integer.toString(weightNum).concat(unit);
+
+            System.out.println(weight);
             break;
         }
 
@@ -398,14 +432,15 @@ public class ArticleController {
                 System.out.printf("%d / %s / %s / %s / %d" + "원" + " / %s" + " / %d" + "점" + " / %s / %s / %s\n", postNum, article.getCategory(), article.getFoodName(), article.getBrandName(), article.getPrice(), article.getWeight(), article.getScope(), article.getReview(), article.getWriter(), article.getRegDate());
                 postNum++;
             }
-//            int sum = 0;
-//            for(int i = 0; i < articles.size(); i++) {
-//                Article article = articles.get(i);
-//                sum += article.getScope();
-//            }
-//            double answer = sum / (double)articles.size();
-//
-//            System.out.println("평균 별점 : " + answer);
+           double sum = 0;
+            for(int i = 0; i < articlesResult.size(); i++) {
+              Article article = articlesResult.get(i);
+                sum += article.getScope();
+            }
+            double answer = sum / (double)articlesResult.size();
+            double result  = Math.round(answer * 10) / 10.0;
+
+            System.out.printf("평균 별점 : " + result);
 
             Container.meneList2();
         }
