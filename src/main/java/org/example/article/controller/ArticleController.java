@@ -34,6 +34,7 @@ public class ArticleController {
         String foodName;
         String brandName;
         int price;
+        String weight;
         String inputWeight;
         int scope;
         String review;
@@ -82,8 +83,10 @@ public class ArticleController {
 
         System.out.println("\n5.중량을 입력해 주세요.");
 
-        String weight;
+
+
         while (true) {
+
             try {
                 inputWeight = Container.getSc().nextLine().trim();
             } catch (Exception e) {
@@ -93,6 +96,7 @@ public class ArticleController {
 
             int weightNum = Integer.parseInt(inputWeight.replaceAll("[^0-9]", ""));
             String unit = inputWeight.replaceAll("[^g ml]", "");
+            //KG이 아닌 kg로 ml가 아닌 Ml 적어도 오류가 안뜨고 넘어가는 문제 해결 필요.
             if (unit.equals("")) {
                 System.out.println("단위는 g, ml만 가능합니다");
                 continue;
@@ -103,22 +107,6 @@ public class ArticleController {
             System.out.println(weight);
             break;
         }
-
-//        while(true) {
-//
-//            int weightNum = Integer.parseInt(inputWeight.replaceAll("[^0-9]", ""));
-//            String unit = inputWeight.replaceAll("[^g ml]", "");
-//            if(unit.equals("")) {
-//                System.out.println("단위는 g, ml만 가능합니다");
-//                continue;
-//            }
-//
-//            String weight = Integer.toString(weightNum).concat(unit);
-//
-//            System.out.println(weight);
-//            break;
-//        }
-
 
         System.out.println("\n6.별점을 입력해 주세요.\n5점 만점(1 / 2 / 3 / 4 / 5)");
         while (true) {
