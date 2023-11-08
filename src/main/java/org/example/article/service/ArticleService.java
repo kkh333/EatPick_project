@@ -7,7 +7,7 @@ import java.util.List;
 
 public class ArticleService {
     ArticleRepository articleRepository = new ArticleRepository();
-    public void write(String category, String foodName, String brandName, int price, int weight, int scope, String review, String writer) {
+    public void write(String category, String foodName, String brandName, int price, String weight, int scope, String review, String writer) {
         this.articleRepository.write(category, foodName, brandName, price, weight, scope, review, writer);
     }
     public List<Article> getArticleListAll() {
@@ -22,7 +22,7 @@ public class ArticleService {
     public void remove(Article article) {
         this.articleRepository.remove(article);
     }
-    public void modify(Article article, String category, String foodName, String brandName, int price, int weight, int scope, String review) {
+    public void modify(Article article, String category, String foodName, String brandName, int price, String weight, int scope, String review) {
         this.articleRepository.modify(article, category, foodName, brandName, price, weight, scope, review);
     }
 }

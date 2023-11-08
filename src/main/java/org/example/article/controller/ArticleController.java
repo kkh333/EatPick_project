@@ -10,6 +10,8 @@ import org.example.util.Util;
 import java.util.ArrayList;
 import java.util.List;
 
+
+
 public class ArticleController {
     ArticleService articleService = new ArticleService();
 
@@ -22,7 +24,7 @@ public class ArticleController {
 
         for (int i = 0; i < articles.size(); i++) {
             Article article = articles.get(i);
-            System.out.printf("%d / %s / %s / %s / %d" + "원" + " / %d" + "g,ml" + " / %d" + "점" + " / %s / %s\n", postNum, article.getCategory(), article.getFoodName(), article.getBrandName(), article.getPrice(), article.getWeight(), article.getScope(), article.getReview(), article.getRegDate());
+            System.out.printf("%d / %s / %s / %s / %d" + "원" + " / %s"  + " / %d" + "점" + " / %s / %s\n", postNum, article.getCategory(), article.getFoodName(), article.getBrandName(), article.getPrice(), article.getWeight(), article.getScope(), article.getReview(), article.getRegDate());
             postNum++;
         }
     }
@@ -32,7 +34,7 @@ public class ArticleController {
         String foodName;
         String brandName;
         int price;
-        int weight;
+        String inputWeight;
         int scope;
         String review;
 
@@ -79,15 +81,44 @@ public class ArticleController {
         }
 
         System.out.println("\n5.중량을 입력해 주세요.");
+
+        String weight;
         while (true) {
             try {
-                weight = Integer.parseInt(Container.getSc().nextLine().trim());
+                inputWeight = Container.getSc().nextLine().trim();
             } catch (Exception e) {
                 System.out.println("\n입력된 값은 숫자가 아닙니다. 다시 입력해 주세요.");
                 continue;
             }
+
+            int weightNum = Integer.parseInt(inputWeight.replaceAll("[^0-9]", ""));
+            String unit = inputWeight.replaceAll("[^g ml]", "");
+            if (unit.equals("")) {
+                System.out.println("단위는 g, ml만 가능합니다");
+                continue;
+            }
+
+            weight = Integer.toString(weightNum).concat(unit);
+
+            System.out.println(weight);
             break;
         }
+
+//        while(true) {
+//
+//            int weightNum = Integer.parseInt(inputWeight.replaceAll("[^0-9]", ""));
+//            String unit = inputWeight.replaceAll("[^g ml]", "");
+//            if(unit.equals("")) {
+//                System.out.println("단위는 g, ml만 가능합니다");
+//                continue;
+//            }
+//
+//            String weight = Integer.toString(weightNum).concat(unit);
+//
+//            System.out.println(weight);
+//            break;
+//        }
+
 
         System.out.println("\n6.별점을 입력해 주세요.\n5점 만점(1 / 2 / 3 / 4 / 5)");
         while (true) {
@@ -146,7 +177,7 @@ public class ArticleController {
         String foodName;
         String brandName;
         int price;
-        int weight;
+        String weight;
         int scope;
         String review;
 
@@ -200,7 +231,7 @@ public class ArticleController {
         while (true) {
             try {
                 System.out.printf("기존 내용 : " + article.getWeight() + " => ");
-                weight = Integer.parseInt(Container.getSc().nextLine().trim());
+                weight = Container.getSc().nextLine().trim();
             } catch (Exception e) {
                 System.out.println("\n입력된 값은 숫자가 아닙니다. 다시 입력해 주세요.");
                 continue;
@@ -298,7 +329,7 @@ public class ArticleController {
 
             for (int i = 0; i < articles.size(); i++) {
                 Article article = articles.get(i);
-                System.out.printf("%d / %s / %s / %s / %d" + "원" + " / %d" + "g,ml" + " / %d" + "점" + " / %s / %s / %s\n", postNum, article.getCategory(), article.getFoodName(), article.getBrandName(), article.getPrice(), article.getWeight(), article.getScope(), article.getReview(), article.getWriter(), article.getRegDate());
+                System.out.printf("%d / %s / %s / %s / %d" + "원" + " / %s"  + " / %d" + "점" + " / %s / %s / %s\n", postNum, article.getCategory(), article.getFoodName(), article.getBrandName(), article.getPrice(), article.getWeight(), article.getScope(), article.getReview(), article.getWriter(), article.getRegDate());
                 postNum++;
             }
 
@@ -343,7 +374,7 @@ public class ArticleController {
 
             for (int i = 0; i < articles.size(); i++) {
                 Article article = articles.get(i);
-                System.out.printf("%d / %s / %s / %s / %d" + "원" + " / %d" + "g,ml" + " / %d" + "점" + " / %s / %s / %s\n", postNum, article.getCategory(), article.getFoodName(), article.getBrandName(), article.getPrice(), article.getWeight(), article.getScope(), article.getReview(), article.getWriter(), article.getRegDate());
+                System.out.printf("%d / %s / %s / %s / %d" + "원" + " / %s"  + " / %d" + "점" + " / %s / %s / %s\n", postNum, article.getCategory(), article.getFoodName(), article.getBrandName(), article.getPrice(), article.getWeight(), article.getScope(), article.getReview(), article.getWriter(), article.getRegDate());
                 postNum++;
             }
 
@@ -376,11 +407,17 @@ public class ArticleController {
 
             for (int i = 0; i < articlesResult.size(); i++) {
                 Article article = articlesResult.get(i);
-                System.out.printf("%d / %s / %s / %s / %d" + "원" + " / %d" + "g,ml" + " / %d" + "점" + " / %s / %s / %s\n", postNum, article.getCategory(), article.getFoodName(), article.getBrandName(), article.getPrice(), article.getWeight(), article.getScope(), article.getReview(), article.getWriter(), article.getRegDate());
-                //System.out.println("평균 별점 : article.getScope()의 총합 / article.getScope()의 개수")
+                System.out.printf("%d / %s / %s / %s / %d" + "원" + " / %s" + " / %d" + "점" + " / %s / %s / %s\n", postNum, article.getCategory(), article.getFoodName(), article.getBrandName(), article.getPrice(), article.getWeight(), article.getScope(), article.getReview(), article.getWriter(), article.getRegDate());
                 postNum++;
-                //중량 단위 제한( 1. g, ml를 제외한 나머지 오류 처리 2. 단순한 선택지 2개만 주고 작성자를 신뢰)
             }
+//            int sum = 0;
+//            for(int i = 0; i < articles.size(); i++) {
+//                Article article = articles.get(i);
+//                sum += article.getScope();
+//            }
+//            double answer = sum / (double)articles.size();
+//
+//            System.out.println("평균 별점 : " + answer);
 
             Container.meneList2();
         }
@@ -411,7 +448,7 @@ public class ArticleController {
 
             for (int i = 0; i < articlesResult.size(); i++) {
                 Article article = articlesResult.get(i);
-                System.out.printf("%d / %s / %s / %s / %d" + "원" + " / %d" + "g,ml" + " / %d" + "점" + " / %s / %s / %s\n", postNum, article.getCategory(), article.getFoodName(), article.getBrandName(), article.getPrice(), article.getWeight(), article.getScope(), article.getReview(), article.getWriter(), article.getRegDate());
+                System.out.printf("%d / %s / %s / %s / %d" + "원" + " / %s" + " / %d" + "점" + " / %s / %s / %s\n", postNum, article.getCategory(), article.getFoodName(), article.getBrandName(), article.getPrice(), article.getWeight(), article.getScope(), article.getReview(), article.getWriter(), article.getRegDate());
                 postNum++;
             }
 
@@ -444,7 +481,7 @@ public class ArticleController {
 
             for (int i = 0; i < articlesResult.size(); i++) {
                 Article article = articlesResult.get(i);
-                System.out.printf("%d / %s / %s / %s / %d" + "원" + " / %d" + "g,ml" + " / %d" + "점" + " / %s / %s / %s\n", postNum, article.getCategory(), article.getFoodName(), article.getBrandName(), article.getPrice(), article.getWeight(), article.getScope(), article.getReview(), article.getWriter(), article.getRegDate());
+                System.out.printf("%d / %s / %s / %s / %d" + "원" + " / %s" + " / %d" + "점" + " / %s / %s / %s\n", postNum, article.getCategory(), article.getFoodName(), article.getBrandName(), article.getPrice(), article.getWeight(), article.getScope(), article.getReview(), article.getWriter(), article.getRegDate());
                 postNum++;
             }
 
