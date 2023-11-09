@@ -84,16 +84,20 @@ public class ArticleController {
         System.out.println("\n5.중량을 입력해 주세요.");
 
         while (true) {
+            inputWeight = Container.getSc().nextLine().trim();
+//            try {
+//                inputWeight = Container.getSc().nextLine().trim();
+//            } catch (Exception e) {
+//                System.out.println("\n입력된 값은 숫자가 아닙니다. 다시 입력해 주세요.");
+//                continue;
+//            }
 
-            try {
-                inputWeight = Container.getSc().nextLine().trim();
-            } catch (Exception e) {
+            int weightNum = Integer.parseInt(inputWeight.replaceAll("[^0-9]", ""));
+            if(Integer.toString(weightNum).equals("") ){
                 System.out.println("\n입력된 값은 숫자가 아닙니다. 다시 입력해 주세요.");
                 continue;
             }
-
-            int weightNum = Integer.parseInt(inputWeight.replaceAll("[^0-9]", ""));
-            String unit = inputWeight.replaceAll("[^a-z]", "");
+            String unit = inputWeight.replaceAll("[^a-zA-Z]", "");
             //Kg을 작성 하면 g만 출력 되는 현상 해결 필요.
             switch(unit.toLowerCase()) {
                 case "kg" :
@@ -237,7 +241,7 @@ public class ArticleController {
             }
 
             int weightNum = Integer.parseInt(inputWeight.replaceAll("[^0-9]", ""));
-            String unit = inputWeight.replaceAll("[^a-z]", "");
+            String unit = inputWeight.replaceAll("[^a-z A-Z]", "");
             switch(unit.toLowerCase()) {
                 case "kg" :
                     unit = "kg";
@@ -248,7 +252,7 @@ public class ArticleController {
                 case "g":
                     unit = "g";
                     break;
-                case "L" :
+                case "l" :
                     unit = "l";
                     break;
                 default:
