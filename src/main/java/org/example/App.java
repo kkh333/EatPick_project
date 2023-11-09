@@ -7,7 +7,7 @@ import org.example.member.service.MemberService;
 import org.example.system.controller.SystemController;
 
 public class App {
-    public App () {
+    public App() {
         DBConnection.DB_NAME = "proj1";
         DBConnection.DB_USER = "root";
         DBConnection.DB_PASSWORD = "";
@@ -43,15 +43,18 @@ public class App {
                         memberController.login();
                         break;
                     case "회원가입":
+
+                        System.out.println("비밀번호는 9자 이상, 영문과 특수문자가 포함되어야 합니다.");
+
                     case "2":
+
                         memberController.join();
                         break;
                     case "3":
                         systemController.exit();
                         return;
                 }
-            }
-            else if (Container.getLoginedMember() != null) {
+            } else if (Container.getLoginedMember() != null) {
                 switch (command) {
                     case "게시글 등록":
                     case "1":
@@ -85,13 +88,26 @@ public class App {
                     case "8":
                         articleController.brandNamePost();
                         break;
-                    case "로그아웃":
+                    case "작성자 검색":
                     case "9":
+                        articleController.writerPost();
+                        break;
+                    case "로그아웃":
+                    case "10":
                         memberController.logout();
                         break;
-                    case "10":
+                    case "회원탈퇴":
+                    case "11":
+                        System.out.println("정말로 회원 탈퇴를 진행하시겠습니까? y/n");
+                        String wdCommand = Container.getSc().nextLine();
+                        memberController.withdraw(wdCommand);
+                        if (wdCommand.equals("y")) {
+                            memberController.logout();
+                        } else break;
+                    case "12":
                         systemController.exit();
                         return;
+
                 }
             }
         }

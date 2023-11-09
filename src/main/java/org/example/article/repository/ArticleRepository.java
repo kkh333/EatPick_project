@@ -13,14 +13,14 @@ public class ArticleRepository {
     public ArticleRepository () {
         dbConnection = Container.getDBconnection();
     }
-    public void write(String category, String foodName, String brandName, int price, int weight, int scope, String review, String writer) {
+    public void write(String category, String foodName, String brandName, int price, String weight, int scope, String review, String writer) {
         StringBuilder sb = new StringBuilder();
         sb.append(String.format("INSERT INTO article "));
         sb.append(String.format("SET category = '%s', ", category));
         sb.append(String.format("foodName = '%s', ", foodName));
         sb.append(String.format("brandName = '%s', ", brandName));
         sb.append(String.format("price = %d, ", price));
-        sb.append(String.format("weight = %d, ", weight));
+        sb.append(String.format("weight = '%s', ", weight));
         sb.append(String.format("scope = %d, ", scope));
         sb.append(String.format("review = '%s', ", review));
         sb.append(String.format("writer = '%s', ", writer));
@@ -85,7 +85,7 @@ public class ArticleRepository {
 
         dbConnection.delete(sb.toString());
     }
-    public void modify(Article article, String category, String foodName, String brandName, int price, int weight, int scope, String review) {
+    public void modify(Article article, String category, String foodName, String brandName, int price, String weight, int scope, String review) {
         int id = article.getId();
 
         StringBuilder sb = new StringBuilder();
@@ -95,12 +95,21 @@ public class ArticleRepository {
         sb.append(String.format("foodName = '%s', ", foodName));
         sb.append(String.format("brandName = '%s', ", brandName));
         sb.append(String.format("price = %d, ", price));
-        sb.append(String.format("weight = %d, ", weight));
+        sb.append(String.format("weight = '%s', ", weight));
         sb.append(String.format("scope = %d, ", scope));
         sb.append(String.format("review = '%s', ", review));
         sb.append(String.format("regDate = now() "));
         sb.append(String.format("WHERE id = %s", id));
 
         dbConnection.update(sb.toString());
+    }
+
+    public void withdrawalRemovePost(String nickname) {
+        StringBuilder sb = new StringBuilder();
+
+        sb.append(String.format("DELETE FROM article "));
+        sb.append(String.format("WHERE writer = \"%s\"", nickname));
+
+        dbConnection.delete(sb.toString());
     }
 }

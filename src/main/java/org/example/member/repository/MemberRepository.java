@@ -44,4 +44,12 @@ public class MemberRepository {
 
         int id = dbConnection.insert(sb.toString());
     }
+
+    public void withdrawal(int memberId) {
+        // 회원 탈퇴 쿼리를 작성
+        String sql = "DELETE FROM `member` WHERE id = " + memberId;
+
+
+        dbConnection.delete(sql);
+    }
 }
