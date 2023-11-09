@@ -97,22 +97,26 @@ public class MemberController {
         Container.meneList1();
     }
 
-    public void withdraw() { //회원 탈퇴
-        if (Container.getLoginedMember() == null) {
-            System.out.println("로그인 후에 탈퇴가 가능합니다.");
-            return;
+    public boolean withdraw(String wdCommand) { // 회원 탈퇴
+        System.out.println("정말로 회원 탈퇴를 진행하시겠습니까? y/n");
+
+        if (wdCommand.equals("y")) {
+            System.out.println("회원 탈퇴를 진행합니다.");
+
+            int memberId = Container.getLoginedMember().getId();
+
+            // MemberRepository에서 withdrawal 메서드를 호출하여 회원 탈퇴 진행
+            memberService.withdrawal(memberId);
+
+            System.out.println("회원 탈퇴가 완료되었습니다.");
+            return true;
+        } else if (wdCommand.equals("n")) {
+            return false;
+        } else {
+            // "y" 또는 "n" 이외의 값인 경우에 대한 처리를 추가
+            System.out.println("올바른 입력이 아닙니다.");
+            return false;
         }
-
-        System.out.println("회원 탈퇴를 진행합니다.");
-
-        // memberId는 로그인된 회원의 ID를 사용하도록 설정해야 합니다.
-        int memberId = Container.getLoginedMember().getId();
-
-        // MemberRepository에서 withdrawal 메서드를 호출하여 회원 탈퇴 진행
-        memberService.withdrawal(memberId);
-
-        System.out.println("회원 탈퇴가 완료되었습니다.");
-
     }
 
 }

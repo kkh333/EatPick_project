@@ -1,49 +1,39 @@
-#테이터베이스
-삭제 및 생성
-DROP
-DATABASE IF EXISTS proj1;
-CREATE
-DATABASE proj1;
+#테이터베이스 삭제 및 생성
+DROP DATABASE IF EXISTS proj1;
+CREATE DATABASE proj1;
 
-#테이터베이스
-선택
+#테이터베이스 선택
 USE proj1;
 
-#테이블
-조회
+#테이블 조회
 SHOW tables;
 
-#테이블
-생성
+#테이블 생성
 DROP TABLE `member`;
 DROP TABLE article;
 
-#테이블
-생성
-CREATE TABLE `member`
-(
-    id         int UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    nickname   char(100) NOT NULL UNIQUE,
+#테이블 생성
+CREATE TABLE `member` (
+    id int UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    nickname char(100) NOT NULL UNIQUE,
     `password` char(100) NOT NULL,
-    regDate    datetime  NOT NULL
+    regDate datetime  NOT NULL
 );
 
-CREATE TABLE article
-(
-    id        int UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    category  char(100) NOT NULL,
-    foodName  char(100) NOT NULL,
+CREATE TABLE article (
+    id int UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    category char(100) NOT NULL,
+    foodName char(100) NOT NULL,
     brandName char(100) NOT NULL,
-    price     int       NOT NULL,
-    weight    int       NOT NULL,
-    `scope`   int       NOT NULL,
-    review    text      NOT NULL,
-    writer    char(100) NOT NULL,
-    regDate   datetime  NOT NULL
+    price int NOT NULL,
+    weight int NOT NULL,
+    `scope` int NOT NULL,
+    review text NOT NULL,
+    writer char(100) NOT NULL,
+    regDate datetime  NOT NULL
 );
 
-#기본
-관리자 및 사용자 생성
+#기본 관리자 및 사용자 생성
 INSERT INTO `member`
 SET nickname = "관리자",
 `password` = "123",
@@ -64,8 +54,7 @@ SET nickname = "한재현",
 `password` = "123",
 regDate = now();
 
-#기본
-데이터 생성
+#기본 데이터 생성
 INSERT INTO article
 SET category = "육류",
 foodName = "소안창살",
@@ -176,15 +165,13 @@ review = "역시 보충제는 초코맛이 짱이죠.",
 writer = "한재현",
 regDate = now();
 
-#테이블
-조회
+#테이블 조회
 SELECT *
 FROM `member`;
 SELECT *
 FROM article;
 
-#테이블
-구조 조회
+#테이블 구조 조회
 DESC `member`;
 DESC article;
 

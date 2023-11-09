@@ -22,6 +22,7 @@ public class App {
         ArticleController articleController = new ArticleController();
 
         System.out.println("== Eat Pick 시작 ==");
+        System.out.println("명령어 입력은 숫자로 입력해도 되고 한글로 입력해도 됩니다.");
 
         Container.meneList1();
 
@@ -38,46 +39,69 @@ public class App {
             if (Container.getLoginedMember() == null) {
                 switch (command) {
                     case "로그인":
+                    case "1":
                         memberController.login();
                         break;
                     case "회원가입":
+
                         System.out.println("비밀번호는 9자 이상, 영문과 특수문자가 포함되어야 합니다.");
+
+                    case "2":
+
                         memberController.join();
                         break;
+                    case "3":
+                        systemController.exit();
+                        return;
                 }
             }
             else if (Container.getLoginedMember() != null) {
                 switch (command) {
-                    case "로그아웃":
-                        memberController.logout();
-                        break;
                     case "게시글 등록":
+                    case "1":
                         articleController.write();
                         break;
                     case "게시글 수정":
+                    case "2":
                         articleController.modify();
                         break;
                     case "게시글 삭제":
+                    case "3":
                         articleController.remove();
                         break;
                     case "나의 게시글":
+                    case "4":
                         articleController.myPost();
                         break;
                     case "전체 게시글":
+                    case "5":
                         articleController.allPost();
                         break;
                     case "카테고리 검색":
+                    case "6":
                         articleController.categoryPost();
                         break;
                     case "음식명 검색":
+                    case "7":
                         articleController.foodNamePost();
                         break;
                     case "브랜드명 검색":
+                    case "8":
                         articleController.brandNamePost();
                         break;
+
                     case "회원탈퇴":
                         memberController.withdraw();
                         memberController.logout();
+
+                    case "로그아웃":
+                    case "9":
+                        memberController.logout();
+                        break;
+                    case "10":
+                        systemController.exit();
+                        return;
+
                 }
             }
         }
