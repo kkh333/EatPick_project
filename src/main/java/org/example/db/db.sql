@@ -26,7 +26,7 @@ CREATE TABLE article (
     foodName char(100) NOT NULL,
     brandName char(100) NOT NULL,
     price int NOT NULL,
-    weight int NOT NULL,
+    weight char(100) NOT NULL,
     `scope` int NOT NULL,
     review text NOT NULL,
     writer char(100) NOT NULL,

@@ -98,8 +98,6 @@ public class MemberController {
     }
 
     public boolean withdraw(String wdCommand) { // 회원 탈퇴
-        System.out.println("정말로 회원 탈퇴를 진행하시겠습니까? y/n");
-
         if (wdCommand.equals("y")) {
             System.out.println("회원 탈퇴를 진행합니다.");
 
@@ -111,11 +109,14 @@ public class MemberController {
             System.out.println("회원 탈퇴가 완료되었습니다.");
             return true;
         } else if (wdCommand.equals("n")) {
+            Container.meneList2();
             return false;
         } else {
             // "y" 또는 "n" 이외의 값인 경우에 대한 처리를 추가
             System.out.println("올바른 입력이 아닙니다.");
+            Container.meneList2();
             return false;
+
         }
     }
 

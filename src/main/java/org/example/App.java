@@ -7,7 +7,7 @@ import org.example.member.service.MemberService;
 import org.example.system.controller.SystemController;
 
 public class App {
-    public App () {
+    public App() {
         DBConnection.DB_NAME = "proj1";
         DBConnection.DB_USER = "root";
         DBConnection.DB_PASSWORD = "";
@@ -54,8 +54,7 @@ public class App {
                         systemController.exit();
                         return;
                 }
-            }
-            else if (Container.getLoginedMember() != null) {
+            } else if (Container.getLoginedMember() != null) {
                 switch (command) {
                     case "게시글 등록":
                     case "1":
@@ -89,18 +88,25 @@ public class App {
                     case "8":
                         articleController.brandNamePost();
                         break;
-
-                    case "회원탈퇴":
-                        memberController.withdraw();
-                        memberController.logout();
-
-                    case "로그아웃":
+                    case "작성자 검색":
                     case "9":
+                        articleController.writerPost();
+                        break;
+                    case "로그아웃":
+                    case "10":
                         memberController.logout();
                         break;
-                    case "10":
+                    case "11":
                         systemController.exit();
                         return;
+                    case "회원탈퇴":
+                    case "12":
+                        System.out.println("정말로 회원 탈퇴를 진행하시겠습니까? y/n");
+                        String wdCommand = Container.getSc().nextLine();
+                        memberController.withdraw(wdCommand);
+                        if (wdCommand.equals("y")) {
+                            memberController.logout();
+                        } else break;
 
                 }
             }

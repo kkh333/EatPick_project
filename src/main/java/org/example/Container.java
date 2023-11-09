@@ -28,7 +28,9 @@ public class Container {
         System.out.println("\n1.로그인 / 2.회원가입 / 3.종료");
     }
     public static void meneList2() {
-        System.out.println("\n1.게시글 등록 / 2.게시글 수정 / 3.게시글 삭제 / 4.나의 게시글 / 5.전체 게시글 / 6.카테고리 검색 / 7.음식명 검색 / 8.브랜드명 검색 / 9.로그아웃 / 10.회원탈퇴 / 11.종료");
+
+        System.out.println("\n1.게시글 등록 / 2.게시글 수정 / 3.게시글 삭제 / 4.나의 게시글 / 5.전체 게시글 / 6.카테고리 검색 / 7.음식명 검색 / 8.브랜드명 검색 / 9.작성자 검색 / 10.로그아웃 / 11.종료 / 12.회원탈퇴");
+
     }
     public static void postTh1() {
         System.out.println("\n번호 / 카테고리 / 음식명 / 브랜드명 / 가격 / 중량 / 별점 / 한 줄 리뷰 / 작성 시간");

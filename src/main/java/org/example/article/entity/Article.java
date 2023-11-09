@@ -15,7 +15,7 @@ public class Article {
     private String foodName;
     private String brandName;
     private int price;
-    private int weight;
+    private String weight;
     private int scope;
     private String review;
     private String writer;
@@ -27,7 +27,7 @@ public class Article {
         this.foodName = (String) row.get("foodName");
         this.brandName = (String) row.get("brandName");
         this.price = (int) row.get("price");
-        this.weight = (int) row.get("weight");
+        this.weight = (String) row.get("weight");
         this.scope = (int) row.get("scope");
         this.review = (String) row.get("review");
         this.writer = (String) row.get("writer");
