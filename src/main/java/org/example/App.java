@@ -75,6 +75,9 @@ public class App {
                     case "브랜드명 검색":
                         articleController.brandNamePost();
                         break;
+                    case "회원탈퇴":
+                        memberController.withdraw();
+                        memberController.logout();
                 }
             }
         }

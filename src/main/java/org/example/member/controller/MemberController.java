@@ -41,10 +41,13 @@ public class MemberController {
 
         Container.meneList1();
     }
+
     public void join() {
         String nickname;
         String password;
         String passwordConfirm;
+
+
 
         while (true) {
             System.out.printf("\n닉네임 : ");
@@ -93,6 +96,25 @@ public class MemberController {
 
         Container.meneList1();
     }
+
+    public void withdraw() { //회원 탈퇴
+        if (Container.getLoginedMember() == null) {
+            System.out.println("로그인 후에 탈퇴가 가능합니다.");
+            return;
+        }
+
+        System.out.println("회원 탈퇴를 진행합니다.");
+
+        // memberId는 로그인된 회원의 ID를 사용하도록 설정해야 합니다.
+        int memberId = Container.getLoginedMember().getId();
+
+        // MemberRepository에서 withdrawal 메서드를 호출하여 회원 탈퇴 진행
+        memberService.withdrawal(memberId);
+
+        System.out.println("회원 탈퇴가 완료되었습니다.");
+
+    }
+
 }
 
 
