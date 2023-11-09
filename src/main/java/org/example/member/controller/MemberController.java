@@ -1,6 +1,7 @@
 package org.example.member.controller;
 
 import org.example.Container;
+import org.example.article.service.ArticleService;
 import org.example.member.entity.Member;
 import org.example.member.service.MemberService;
 import org.example.util.Util;
@@ -8,7 +9,12 @@ import org.example.util.Util;
 import static org.example.member.controller.PasswordValidator.isPasswordValid;
 
 public class MemberController {
-    MemberService memberService = new MemberService();
+    MemberService memberService;
+    ArticleService articleService;
+    public MemberController () {
+        this.memberService = new MemberService();
+        this.articleService = new ArticleService();
+    }
     public void login() {
         System.out.printf("\n닉네임 : ");
         String nickname = Container.getSc().nextLine().trim();
@@ -102,9 +108,11 @@ public class MemberController {
             System.out.println("회원 탈퇴를 진행합니다.");
 
             int memberId = Container.getLoginedMember().getId();
+            String Nickname = Container.getLoginedMember().getNickname();
 
             // MemberRepository에서 withdrawal 메서드를 호출하여 회원 탈퇴 진행
             memberService.withdrawal(memberId);
+            articleService.withdrawalRemovePost(Nickname);
 
             System.out.println("회원 탈퇴가 완료되었습니다.");
             return true;

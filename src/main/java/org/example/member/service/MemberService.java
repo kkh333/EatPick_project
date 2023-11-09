@@ -4,7 +4,10 @@ import org.example.member.entity.Member;
 import org.example.member.repository.MemberRepository;
 
 public class MemberService {
-    MemberRepository memberRepository = new MemberRepository();
+    MemberRepository memberRepository;
+    public MemberService () {
+        this.memberRepository = new MemberRepository();
+    }
     public Member getFindByNickname(String nickname) {
         return this.memberRepository.getFindByNickname(nickname);
     }

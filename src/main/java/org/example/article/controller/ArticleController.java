@@ -13,7 +13,10 @@ import java.util.Locale;
 
 
 public class ArticleController {
-    ArticleService articleService = new ArticleService();
+    ArticleService articleService;
+    public ArticleController () {
+        this.articleService = new ArticleService();
+    }
 
     public void myPostList() {
         List<Article> articles = articleService.getArticleListMy();

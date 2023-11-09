@@ -6,7 +6,10 @@ import org.example.article.repository.ArticleRepository;
 import java.util.List;
 
 public class ArticleService {
-    ArticleRepository articleRepository = new ArticleRepository();
+    ArticleRepository articleRepository;
+    public ArticleService () {
+        this.articleRepository = new ArticleRepository();
+    }
     public void write(String category, String foodName, String brandName, int price, String weight, int scope, String review, String writer) {
         this.articleRepository.write(category, foodName, brandName, price, weight, scope, review, writer);
     }
@@ -24,5 +27,9 @@ public class ArticleService {
     }
     public void modify(Article article, String category, String foodName, String brandName, int price, String weight, int scope, String review) {
         this.articleRepository.modify(article, category, foodName, brandName, price, weight, scope, review);
+    }
+
+    public void withdrawalRemovePost(String nickname) {
+        this.articleRepository.withdrawalRemovePost(nickname);
     }
 }

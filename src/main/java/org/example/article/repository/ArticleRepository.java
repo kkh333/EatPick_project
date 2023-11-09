@@ -103,4 +103,13 @@ public class ArticleRepository {
 
         dbConnection.update(sb.toString());
     }
+
+    public void withdrawalRemovePost(String nickname) {
+        StringBuilder sb = new StringBuilder();
+
+        sb.append(String.format("DELETE FROM article "));
+        sb.append(String.format("WHERE writer = \"%s\"", nickname));
+
+        dbConnection.delete(sb.toString());
+    }
 }
