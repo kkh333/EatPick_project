@@ -14,23 +14,23 @@ DROP TABLE article;
 
 #테이블 생성
 CREATE TABLE `member` (
-    id int UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    nickname char(100) NOT NULL UNIQUE,
-    `password` char(100) NOT NULL,
-    regDate datetime  NOT NULL
+                          id int UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
+                          nickname char(100) NOT NULL UNIQUE,
+                          `password` char(100) NOT NULL,
+                          regDate datetime  NOT NULL
 );
 
 CREATE TABLE article (
-    id int UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    category char(100) NOT NULL,
-    foodName char(100) NOT NULL,
-    brandName char(100) NOT NULL,
-    price int NOT NULL,
-    weight char(100) NOT NULL,
-    `scope` int NOT NULL,
-    review text NOT NULL,
-    writer char(100) NOT NULL,
-    regDate datetime  NOT NULL
+                         id int UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
+                         category char(100) NOT NULL,
+                         foodName char(100) NOT NULL,
+                         brandName char(100) NOT NULL,
+                         price int NOT NULL,
+                         weight char(100) NOT NULL,
+                         `scope` int NOT NULL,
+                         review text NOT NULL,
+                         writer char(100) NOT NULL,
+                         regDate datetime  NOT NULL
 );
 
 #기본 관리자 및 사용자 생성
