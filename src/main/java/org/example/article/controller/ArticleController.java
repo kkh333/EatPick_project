@@ -88,7 +88,7 @@ public class ArticleController {
            try {
                inputWeight = Container.getSc().nextLine().trim();
 
-               int weightNum = Integer.parseInt(inputWeight.replaceAll("[^0-9]", ""));
+               double weightNum = Double.parseDouble(inputWeight.replaceAll("[^0-9.0]", ""));
                String unit = inputWeight.replaceAll("[^a-zA-Z]", "");
 
                switch(unit.toLowerCase()) {
@@ -109,7 +109,7 @@ public class ArticleController {
                        continue;
                }
 
-               weight = Integer.toString(weightNum).concat(unit);
+               weight = Double.toString(weightNum).concat(unit);
 
            } catch (Exception e) {
                System.out.println("\n올바른 값이 아닙니다. 다시 입력해 주세요.");
@@ -234,7 +234,7 @@ public class ArticleController {
                 System.out.printf("기존 내용 : " + article.getWeight() + " => ");
                 inputWeight = Container.getSc().nextLine().trim();
 
-                int weightNum = Integer.parseInt(inputWeight.replaceAll("[^0-9]", ""));
+                double weightNum = Double.parseDouble(inputWeight.replaceAll("[^0-9.0]", ""));
                 String unit = inputWeight.replaceAll("[^a-zA-Z]", "");
 
                 switch(unit.toLowerCase()) {
@@ -255,7 +255,7 @@ public class ArticleController {
                         continue;
                 }
 
-                weight = Integer.toString(weightNum).concat(unit);
+                weight = Double.toString(weightNum).concat(unit);
 
             } catch (Exception e) {
                 System.out.println("\n올바른 값이 아닙니다. 다시 입력해 주세요.");
