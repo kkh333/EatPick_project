@@ -103,9 +103,9 @@ public class MemberController {
         Container.meneList1();
     }
 
-    public boolean withdraw(String wdCommand) { // 회원 탈퇴
+    public void withdraw(String wdCommand) { // 회원 탈퇴
         if (wdCommand.equals("y")) {
-            System.out.println("회원 탈퇴를 진행합니다.");
+            System.out.println("\n회원 탈퇴를 진행합니다.");
 
             int memberId = Container.getLoginedMember().getId();
             String Nickname = Container.getLoginedMember().getNickname();
@@ -114,16 +114,13 @@ public class MemberController {
             memberService.withdrawal(memberId);
             articleService.withdrawalRemovePost(Nickname);
 
-            System.out.println("회원 탈퇴가 완료되었습니다.");
-            return true;
+            System.out.println("\n회원 탈퇴가 완료되었습니다.");
         } else if (wdCommand.equals("n")) {
             Container.meneList2();
-            return false;
         } else {
             // "y" 또는 "n" 이외의 값인 경우에 대한 처리를 추가
-            System.out.println("올바른 입력이 아닙니다.");
+            System.out.println("\n올바른 입력이 아닙니다.");
             Container.meneList2();
-            return false;
 
         }
     }
