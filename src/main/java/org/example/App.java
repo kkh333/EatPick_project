@@ -98,16 +98,16 @@ public class App {
                         break;
                     case "회원탈퇴":
                     case "11":
-                        System.out.println("정말로 회원 탈퇴를 진행하시겠습니까? y/n");
+                        System.out.println("\n정말로 회원 탈퇴를 진행하시겠습니까? y/n");
                         String wdCommand = Container.getSc().nextLine();
                         memberController.withdraw(wdCommand);
                         if (wdCommand.equals("y")) {
                             memberController.logout();
-                        } else break;
+                        }
+                        break;
                     case "12":
                         systemController.exit();
                         return;
-
                 }
             }
         }
